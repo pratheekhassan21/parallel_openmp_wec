@@ -131,7 +131,7 @@ void LU_DECOMPOSE(float** a, float** l, float** u, int size)
 }
 int main(int argc, char** argv)
 {
-	auto start = std::chrono::high_resolution_clock::now();
+    auto start = std::chrono::high_resolution_clock::now();
    
     int thread=atoi(argv[2]);
 
@@ -147,7 +147,7 @@ int main(int argc, char** argv)
     float** u = new float*[size];
 
     // Check if the matrix file exists, if not, create and save it
-    string matrixFilename = "matrix.txt";
+    string matrixFilename = "LU_DECOMPOSITION_MATRIX_INPUT.txt";
     if (!ifstream(matrixFilename)) {
         // File doesn't exist, generate a random matrix and save it
         cout << "Matrix file not found. Generating a random matrix and saving it." << endl;
@@ -164,14 +164,14 @@ int main(int argc, char** argv)
     }
 
     // Redirect the output to lu_out.txt, create if it doesn't exist
-    freopen("lu_out.txt", "w", stdout);
+    freopen("LU_DECOMPOSITION_MATRIX_OUTPUT.txt" , "w", stdout);
 
     // Print A
     cout << "A Matrix: " << endl;
     print(a, size);
 
     // FINDING RUNTIME USING STANDARD OMP GET_TIME
-    // runtime = omp_get_wtime();
+   
     // DOING LU DECOMPOSITION
     LU_DECOMPOSE(a, l, u, size);
     // Print L and U
