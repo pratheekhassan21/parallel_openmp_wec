@@ -39,7 +39,7 @@ int main(int argc, char* argv[]) {
     }
 
     // Save the array to a file
-    ofstream outFile("random_array.txt");
+    ofstream outFile("SUM_ARRAY_INPUT.txt");
     if (!outFile) {
         cerr << "Error opening the file for writing." << endl;
         return 1;
@@ -48,7 +48,7 @@ int main(int argc, char* argv[]) {
         outFile << array[i] << " ";
     }
     outFile.close();
-    cout << "Random array saved to random_array.txt" << endl;
+    cout << "Random array saved to SUM_ARRAY_INPUT.txt" << endl;
 
     // Parallel sum of the array
     int sum = 0;
