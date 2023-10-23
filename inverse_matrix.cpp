@@ -142,7 +142,7 @@ int main(int argc, char* argv[]) {
     float** a = create_and_fill_matrix(size);
     save_matrix_to_file(a, size, "inverse_matrix_input.txt");
 
-    freopen("inverse_out.txt", "w", stdout);
+    freopen("INVERSE_MATRIX_OUTPUT.txt", "w", stdout);
 
     cout << "Original Matrix:" << endl;
     print_matrix(a, size);
