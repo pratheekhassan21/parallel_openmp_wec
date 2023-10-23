@@ -4,8 +4,7 @@
  memory is being dynamically allocated to avoid the overflow issues for very big matrix and arrays.All the allocated the matrices 
  and array are being filled wiht random values while using the current time as seed for random number genrator.The input for each program
  is taken from command line with two inputs being taken one of them is size of matrix/array and number of threads.The allocated matrix filled
- with random values is being writtten to a file which is "SUM_ARRAY_INPUT.txt" for sum_array, "LU_DECOMPOSITION_MATRIX_INPUT.txt"for lu_decomposition,"INVERSE_MATRIX_INPUT.txt" for inverse matrix.And all the programs output is 
- written to "LU_DECOMPOSITION_MATRIX_OUTPUT.txt" and "INVERSE_MATRIX_OUTPUT.txt" respectively.All the input and output files are created if those files doesnt exist everytime the program is compiled and if exists 
+ with random values is being writtten to a file which is "SUM_ARRAY_INPUT.txt" for sum_array, "LU_DECOMPOSITION_MATRIX_INPUT.txt"for lu_decomposition,"INVERSE_MATRIX_INPUT.txt" for inverse matrix.And all the programs output is written to "LU_DECOMPOSITION_MATRIX_OUTPUT.txt" and "INVERSE_MATRIX_OUTPUT.txt" respectively.All the input and output files are created if those files doesnt exist everytime the program is compiled and if exists 
  the data is read from those respective files.To compile every program (g++ -fopenmp -o (program_file_name) (program_file_name).cpp ) and to 
  execute the program (./(program_file_name) (size of the matrix/array) (number of threads)).Each of the program for time difference caluclation 
  between serial and parallel program,for serial program the program is being execueted on single thread and paralel program is being executed on
