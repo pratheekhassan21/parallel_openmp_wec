@@ -8,8 +8,8 @@
 using namespace std;
 
 
-//to compile and run file: g++ -fopenmp -o inverse_matrix inverse_matrix.cpp
-//to execute: ./inverse_matrix (size of the matrix) (number of threads)
+//to compile the program file: g++ -fopenmp -o inverse_matrix inverse_matrix.cpp
+//to execute the program file: ./inverse_matrix (size of the matrix) (number of threads)
 
 
 
