@@ -91,6 +91,7 @@ Screenshot for the performance difference between serial and parallel program fo
 **For gcc compiler:**
 g++ -fopenmp -o lu_decomposition lu_decomposition.cpp
 ./lu_decomposition (size of matrix) (number of threads)
+
 **For clang compiler:**
 clang++ -fopenmp -o lu_decomposition lu_decomposition.cpp
 ./lu_decomposition (size of matrix) (number of threads)
@@ -134,6 +135,7 @@ Screenshot for the performance difference between serial and parallel program fo
 **For gcc compiler:**
 g++ -fopenmp -o inverse_matrix inverse_matrix.cpp
 ./inverse_matrix (size of the matrix) (number of threads)
+
 **For clang compiler:**
 clang++ -fopenmp -o inverse_matrix inverse_matrix.cpp
 ./inverse_matrix (size of the matrix) (number of threads)
