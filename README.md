@@ -39,7 +39,7 @@ Screenshot for the performance difference between serial and parallel program fo
 The program utilizes OpenMP's parallelism to distribute the sum computation across multiple threads. This can significantly reduce the execution time for large arrays, making it suitable for applications that require fast summation of data.
 
 **Note:** To compile and run the program with OpenMP support, you can use the following command:
-```bash|43
+```c++
 g++ -fopenmp -o sum_array sum_array.cpp
 
 
