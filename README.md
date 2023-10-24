@@ -1,16 +1,18 @@
 
  
- Getting Started:
+ **Getting Started**:
  For the parallel programming tasks given i have used the parallel program library openmp.Starting with for all my programs the
  memory is being dynamically allocated to avoid the overflow issues for very big matrix and arrays.All the allocated the matrices 
  and array are being filled wiht random values while using the current time as seed for random number genrator.The input for each program
- is taken from command line with two inputs being taken one of them is size of matrix/array and number of threads.The allocated matrix filled
- with random values is being writtten to a file which is "SUM_ARRAY_INPUT.txt" ,for sum_array "LU_DECOMPOSITION_MATRIX_INPUT.txt" for lu_decomposition, "INVERSE_MATRIX_INPUT.txt" for inverse matrix.
- And all the programs output is written to   "INVERSE_MATRIX_OUTPUT.txt".All the input and output files are created if those files doesnt exist everytime the program is compiled and if exists. "LU_DECOMPOSITION_MATRIX_OUTPUT.txt" 
- the data is read from those respective files.To compile every program (g++ -fopenmp -o (program_file_name) (program_file_name).cpp ) and to 
- execute the program (./(program_file_name) (size of the matrix/array) (number of threads)).Each of the program for performance difference caluclation 
- between serial and parallel program,for serial program the program is being execueted on single thread and paralel program is being executed on
- 40 threads.
+ is taken from command line with two inputs being taken one of them is size of matrix/array and number of threads.The allocated matrix 
+ filled with random values is being writtten to a file which is "SUM_ARRAY_INPUT.txt" ,for sum_array "LU_DECOMPOSITION_MATRIX_INPUT.txt" 
+ for lu_decomposition, "INVERSE_MATRIX_INPUT.txt" for inverse matrix.
+ And all the programs output is written to   "INVERSE_MATRIX_OUTPUT.txt".All the input and output files are created if those files doesnt 
+ exist everytime the program is compiled and if exists. "LU_DECOMPOSITION_MATRIX_OUTPUT.txt" 
+ the data is read from those respective files.To compile every program (g++ -fopenmp -o (program_file_name) (program_file_name).cpp ) and 
+ to execute the program (./(program_file_name) (size of the matrix/array) (number of threads)).Each of the program for performance 
+ difference calculation between serial and parallel program,for serial program the program is being execueted on single thread and paralel 
+ program is being executed on 40 threads.
 
  ## Parallel Array Summation
 
@@ -93,7 +95,7 @@ The generate_inverse_parallel function is designed to efficiently compute the in
 
 The function starts by initializing an identity matrix I of the same size as the input matrix. An identity matrix is a square matrix with ones on the main diagonal and zeros elsewhere.
 
-2.**Row Pivoting for Numerical Stability**:
+2.**Row Pivoting**:
 To ensure numerical stability and avoid division by zero, the code checks if the main diagonal element of the input matrix is zero. If it is, the code performs row pivoting by swapping the current row with the nearest subsequent row where the diagonal element is non-zero. This step is essential for a stable numerical process.
 
 3.**Normalization**:
