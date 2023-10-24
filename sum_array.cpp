@@ -8,7 +8,7 @@ using namespace std;
 
 
 
-//To compile and run the program file; g++ -fopenmp -o sum_array sum_array.cpp
+//To compile and run the program file: g++ -fopenmp -o sum_array sum_array.cpp
 
 
 
