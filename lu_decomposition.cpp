@@ -9,7 +9,7 @@
 #include <cstdio>
 using namespace std;
 
-//To compile and run the program file; g++ -fopenmp -o lu_decomposition lu_decomposition.cpp
+//To compile and run the program file: g++ -fopenmp -o lu_decomposition lu_decomposition.cpp
 
 
 
