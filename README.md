@@ -40,7 +40,13 @@ The program utilizes OpenMP's parallelism to distribute the sum computation acro
 
 **Note:** To compile and run the program with OpenMP support, you can use the following command:
 
+**For gcc compiler:**
 g++ -fopenmp -o sum_array sum_array.cpp
+./sum_array (size of the array) (number of threads)
+**For clang compiler:**
+clang++ -fopenmp -o sum_array sum_array.cpp
+./sum_array (size of the matrix) (number of threads)
+
 
 
 ## Parallel LU Decomposition
@@ -81,6 +87,15 @@ The `LU_DECOMPOSE` function is particularly useful for applications that require
 
 Screenshot for the performance difference between serial and parallel program for LU decomposition: https://imgur.com/S1jgnQt
 
+**For gcc compiler:**
+g++ -fopenmp -o lu_decomposition lu_decomposition.cpp
+./lu_decomposition (size of matrix) (number of threads)
+**For clang compiler:**
+clang++ -fopenmp -o lu_decomposition lu_decomposition.cpp
+./lu_decomposition (size of matrix) (number of threads)
+
+
+
 ## Parallel Matrix Inversion
 
 The `generate_inverse_parallel` function is designed to compute the inverse of a square matrix using parallel processing, specifically with OpenMP. This function takes as input a square matrix `input_matrix` of size `size` and the number of `threads` to use for parallelization.
@@ -114,5 +129,17 @@ The result is the inverse matrix, stored in I. The inverse matrix can be used fo
 **Note:** Make sure to compile your code with OpenMP support for parallel execution. See the [Getting Started](#getting-started) section in the README for details on compiling your code with OpenMP
 
 Screenshot for the performance difference between serial and parallel program for Inversion of matrix: https://imgur.com/X2DOdYE
+
+**For gcc compiler:**
+g++ -fopenmp -o inverse_matrix inverse_matrix.cpp
+./inverse_matrix (size of the matrix) (number of threads)
+**For clang compiler:**
+clang++ -fopenmp -o inverse_matrix inverse_matrix.cpp
+./inverse_matrix (size of the matrix) (number of threads)
+
+
+**NOTE:** All The programs can be furthur optimized by using gcc compiler flag like '-O3' which will aggresively optimise the code
+which can furthur decrease the execution time.The performance of the code will also depend on the respective computer architecture on
+which the program is being executed.
 
 
