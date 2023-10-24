@@ -51,11 +51,27 @@ The `LU_DECOMPOSE` function performs LU decomposition of a square matrix `a` int
 
 2. **Parallel LU Decomposition**: The core LU decomposition process is parallelized. This allows multiple threads to process different columns of the matrix concurrently, improving efficiency.
 
-3. **Lower Triangular Matrix (L)**: Within the parallel region, the function iterates through each column and row of the input matrix. If the current row index is less than the column index, it sets the corresponding value in the lower triangular matrix `l` to 0. Otherwise, it calculates the value by performing mathematical operations.
+3.**The LU decomposition can be mathematically described as follows**:
 
-4. **Upper Triangular Matrix (U)**: Similarly, for the upper triangular matrix `u`, if the current row index is less than the column index, the value is set to 0. If they are equal, the value is set to 1. For other cases, mathematical operations are performed to determine the value.
+Start with the original matrix A.
 
-5. **Parallel Processing**: The function leverages OpenMP parallelization to distribute the computation of each column across multiple threads. This minimizes the computational load and improves performance, especially for large matrices.
+Create L as a lower triangular matrix and U as an upper triangular matrix.
+
+For each column and row of A, perform the following steps in a parallelized manner (as implemented in the code):
+
+a. If j (column index) is less than i (row index), set L[j][i] to 0, as the lower triangular matrix should have zeros above its main diagonal.
+
+b. If j is greater than or equal to i, set L[j][i] to A[j][i]. This involves copying the values from the original matrix A.
+
+c. Subtract the appropriate values from L[j][i] by iterating over k from 0 to i. This step ensures that L contains the correct values below its main diagonal.
+
+d. For the upper triangular matrix U, perform similar operations. If j is less than i, set U[i][j] to 0. If j is equal to i, set U[i][j] to 1. Otherwise, perform calculations that involve A[i][j], L[i][k], and U[k][j] to populate U.
+
+e.Once the loop iterations are complete, you have successfully decomposed matrix A into the lower triangular matrix L and the upper triangular matrix U.
+
+f.The final L and U matrices can be used for various numerical operations, such as solving systems of linear equations, matrix inversion, or other computations where triangular matrices are useful.
+
+4. **Parallel Processing**: The function leverages OpenMP parallelization to distribute the computation of each column across multiple threads. This minimizes the computational load and improves performance, especially for large matrices.
 
 The `LU_DECOMPOSE` function is particularly useful for applications that require LU decomposition of large matrices, such as solving systems of linear equations or numerical simulations. It takes advantage of multi-core processors to expedite the process.
 
@@ -69,19 +85,29 @@ The `generate_inverse_parallel` function is designed to compute the inverse of a
 
 ### Algorithm Overview
 
-1. **Matrix Initialization**: The function initializes an identity matrix `I` of the same size as the input matrix.
 
-2. **Row Pivoting**: It performs row pivoting to ensure that the main diagonal of the input matrix contains non-zero values. If the main diagonal contains zeros, it swaps rows to bring a non-zero value to the diagonal. If no such value exists, it exits the function as an inverse does not exist.
+Algorithm Overview
+The generate_inverse_parallel function is designed to efficiently compute the inverse of a square matrix, leveraging parallel processing capabilities to enhance performance. Below is a step-by-step explanation of the algorithm:
 
-3. **Normalization**: The function normalizes the rows by dividing the diagonal element. This ensures that the diagonal elements become 1.
+1.**Matrix Initialization**:
 
-4. **Parallel Elimination**: Parallelization is achieved by dividing the elimination process into multiple threads. For each non-diagonal row, a thread scales and subtracts the appropriate values from both the input matrix and the identity matrix. This process is done concurrently, taking advantage of multiple CPU cores.
+The function starts by initializing an identity matrix I of the same size as the input matrix. An identity matrix is a square matrix with ones on the main diagonal and zeros elsewhere.
 
-5. **Back Substitution**: After eliminating values below the diagonal, the function performs back substitution to eliminate values above the diagonal.
+2.**Row Pivoting for Numerical Stability**:
+To ensure numerical stability and avoid division by zero, the code checks if the main diagonal element of the input matrix is zero. If it is, the code performs row pivoting by swapping the current row with the nearest subsequent row where the diagonal element is non-zero. This step is essential for a stable numerical process.
 
-6. **Return Inverse Matrix**: The final result is the inverse matrix, stored in `I`.
+3.**Normalization**:
+For each row, the function normalizes it by dividing the main diagonal element. This operation makes the diagonal elements equal to 1.0. The same scaling factor is applied to the corresponding row in the identity matrix I.
 
-This function is designed to efficiently compute the inverse of a matrix, leveraging parallel processing capabilities to enhance performance. It is suitable for applications that require matrix inversion, such as linear algebra operations and solving systems of linear equations.
+4.**Parallel Elimination for Zeroing Below the Diagonal**:
+To eliminate values below the diagonal and make them zero, the function performs Gaussian elimination. For each non-diagonal row (row below the current row), a thread scales and subtracts the appropriate values from both the input matrix and the identity matrix I. Parallelization is achieved using OpenMP, with multiple threads concurrently processing different rows, taking full advantage of multi-core processors.
+
+5.**Back Substitution for Zeroing Above the Diagonal**:
+After eliminating values below the diagonal, the function performs back substitution to eliminate values above the diagonal. This step ensures that all elements of the input matrix A below and above the diagonal become zero.
+
+6.**Return Inverse Matrix**:
+The result is the inverse matrix, stored in I. The inverse matrix can be used for various numerical computations, including solving systems of linear equations and other applications that require matrix inversion.
+
 
 **Note:** Make sure to compile your code with OpenMP support for parallel execution. See the [Getting Started](#getting-started) section in the README for details on compiling your code with OpenMP
 
