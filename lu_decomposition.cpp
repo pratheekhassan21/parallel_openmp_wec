@@ -9,8 +9,8 @@
 #include <cstdio>
 using namespace std;
 
-//To compile and run the program file: g++ -fopenmp -o lu_decomposition lu_decomposition.cpp
-//to execute: ./lu_decomposition (size of the matrix) (number of threads)
+//To compile the program file: g++ -fopenmp -o lu_decomposition lu_decomposition.cpp
+//to execute the program file: ./lu_decomposition (size of the matrix) (number of threads)
 
 
 
