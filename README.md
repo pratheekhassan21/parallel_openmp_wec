@@ -43,6 +43,7 @@ The program utilizes OpenMP's parallelism to distribute the sum computation acro
 **For gcc compiler:**
 g++ -fopenmp -o sum_array sum_array.cpp
 ./sum_array (size of the array) (number of threads)
+
 **For clang compiler:**
 clang++ -fopenmp -o sum_array sum_array.cpp
 ./sum_array (size of the matrix) (number of threads)
