@@ -8,8 +8,8 @@ using namespace std;
 
 
 
-//To compile and run the program file: g++ -fopenmp -o sum_array sum_array.cpp
-//to execute: ./sum_array (size of the array) (number of threads)
+//To compile the program file: g++ -fopenmp -o sum_array sum_array.cpp
+//to execute the program file: ./sum_array (size of the array) (number of threads)
 
 
 
